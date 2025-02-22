@@ -4,7 +4,6 @@ export default function Home() {
   return (
     <>
       <ThemeToggle />
-      <Header />
       <h1>Home page</h1>
     </>
   );
