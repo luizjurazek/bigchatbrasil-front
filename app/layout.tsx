@@ -30,7 +30,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <Providers>{children}</Providers>
+        <Providers >
+          <div className="container mx-auto my-6 px-4">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
