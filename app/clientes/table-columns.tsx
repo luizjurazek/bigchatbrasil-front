@@ -50,7 +50,7 @@ export const columns: ColumnDef<Client>[] = [
     header: "Perfil",
     accessorKey: "Perfil",  
     cell: ({ row }) => (
-      <Link href={`/clients/${row.getValue('id')}`}><ExternalLink /></Link>
+      <Link href={`/cliente/${row.getValue('id')}`}><ExternalLink /></Link>
     )
   }
 ]

@@ -1,13 +1,13 @@
-import { getClients } from "@/api/Clients/GetClients/clientData";
+import { GetClients } from "@/api/Clients/GetClients";
 import { ThemeToggle } from "@/components/ui/toggleButton";
-import { DataTable } from "@/components/Pages/clientes/TableClients";
-import { columns } from "@/components/Pages/clientes/columns";
+import { DataTable } from "@/components/Pages/Table";
+import { columns } from "./table-columns";
 
 export default async function Home() {
   let data = [];
 
   try {
-    data = await getClients();
+    data = await GetClients();
   } catch (error) {
     console.error("Erro ao buscar clientes:", error);
     return (

@@ -33,6 +33,9 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="rounded-md border">
+      <div className="p-2">
+        <h2 className="text-2xl font-bold">Mensagens: </h2>
+      </div>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

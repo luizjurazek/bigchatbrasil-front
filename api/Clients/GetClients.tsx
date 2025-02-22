@@ -1,7 +1,7 @@
 import { Client } from "@/types/ClientTypes";
 import axios from "axios";
 
-export const getClients = async (): Promise<Client[]> => {
+export const GetClients = async (): Promise<Client[]> => {
   const api = process.env.NEXT_PUBLIC_API_URL;
   try {
     const response = await axios.get(`${api}/clients`);
