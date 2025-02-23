@@ -7,11 +7,10 @@ export default async function Home() {
   const client: Client[] = await GetClients();
   
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <ThemeToggle />
-      <h1>Home page</h1>
-      <FormSendMessage clients={client}/>
       <FormCreateClient />
-    </>
+      <FormSendMessage clients={client}/>
+    </div>
   );
 }

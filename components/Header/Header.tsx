@@ -8,6 +8,7 @@ export default function Header() {
           <Link href="/" className="text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">Home</Link>
           <Link href="/clientes" className="text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">Clientes</Link>
           <Link href="/mensagens" className="text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">Mensagens</Link>
+          <Link href="http://localhost:8080/swagger-ui/index.html#/" target="_blank" className="text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">API</Link>
         </div>
       </nav>
     </header>

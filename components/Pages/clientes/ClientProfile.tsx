@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 
 import UpdateLimitModal from "./UpdateLimitModal"
+import AddCreditModal from "./AddCreditModal"
 
 type ClientProfileProps = {
   client: Client;
@@ -77,10 +78,8 @@ return (
                 <UpdateLimitModal id={client.id} limit={client.creditLimit} />
               )}
 
-              {client.plan === "PRE_PAGO" && (
-                <div>
-                  <Button>Adicionar crédito</Button>
-                </div>
+              {client.id && client.plan === "PRE_PAGO" && (
+                <AddCreditModal id={client.id}/>
               )}
 
               <div>
