@@ -20,7 +20,7 @@ export default function AddCreditModal({ id }: { id: number }) {
   };
 
   async function handleUpdate() {
-    const parsedCredit = parseFloat(credit);
+    const parsedCredit: number = parseFloat(credit);
 
     try {
       if (!isNaN(parsedCredit) && parsedCredit > 0) {

@@ -17,6 +17,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
   const idClient: number = parseInt(id, 10);
   const client: Client = await GetClientById(idClient);
   const messages: Message[] = await GetMessagesByClientId(idClient);
+  const tableTitle: string = `Mensagens enviadas por ${client.name}`;
 
   return (
     <div className="flex flex-col gap-6">
@@ -28,11 +29,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
         <FormSendMessage client_id={client.id} />
       </div>
       <div>
-        <DataTable
-          tableTitle="Mensagens enviadas: "
-          columns={columns}
-          data={messages}
-        />
+        <DataTable tableTitle={tableTitle} columns={columns} data={messages} />
       </div>
     </div>
   );

@@ -4,10 +4,12 @@ import { DataTable } from "@/components/Pages/Table";
 import { ThemeToggle } from "@/components/ui/toggleButton";
 import FormSendMessage from "@/components/Pages/Mensagens/FormSendMessage";
 import { GetClients } from "@/api/Clients/GetClients";
+import { Message } from "@/types/MessageTypes";
+import { Client } from "@/types/ClientTypes";
 
 export default async function MensagensPage() {
-  let messageData = [];
-  let clientData = [];
+  let messageData: Message[] = [];
+  let clientData: Client[] = [];
 
   try {
     messageData = await GetMessages();
