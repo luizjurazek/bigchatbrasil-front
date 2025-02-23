@@ -20,8 +20,12 @@ export async function HandleSubmitSendMessage(values: z.infer<typeof formSchema>
 
     toast.success("Mensagem enviada com sucesso!", {
       description: "Sua mensagem foi entregue ao destinatário.",
-      duration: 5000, 
+      duration: 3000, 
     });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
 
   } catch (error) {
     let errorMessage = "Ocorreu um erro ao enviar a mensagem.";
