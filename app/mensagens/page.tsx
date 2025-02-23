@@ -21,7 +21,7 @@ export default async function MensagensPage() {
       <>
         <ThemeToggle />
         <div>
-          <DataTable columns={columns} data={data} />
+          <DataTable tableTitle="Mensagens: " columns={columns} data={data} />
         </div>
       </>
     );

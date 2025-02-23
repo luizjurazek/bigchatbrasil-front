@@ -21,7 +21,7 @@ export default async function Clientes() {
     <>
       <ThemeToggle />
       <div>
-        <DataTable columns={columns} data={data} />
+        <DataTable tableTitle="Clientes: " columns={columns} data={data} />
       </div>
     </>
   );

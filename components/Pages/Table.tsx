@@ -18,12 +18,14 @@ import {
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TData[],
+  tableTitle: string
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  tableTitle,
 }: DataTableProps<TData , TValue>) {
   const table = useReactTable({
     data,
@@ -34,7 +36,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="rounded-md border">
       <div className="p-2">
-        <h2 className="text-2xl font-bold">Mensagens: </h2>
+        <h2 className="text-2xl font-bold">{tableTitle} </h2>
       </div>
       <Table>
         <TableHeader>

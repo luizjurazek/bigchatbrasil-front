@@ -28,7 +28,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
         <FormSendMessage client_id={client.id} />
       </div>
       <div>
-        <DataTable columns={columns} data={messages} />
+        <DataTable tableTitle="Mensagens enviadas: " columns={columns} data={messages} />
       </div>
     </div>
   );
