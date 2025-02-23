@@ -18,6 +18,7 @@ export default async function Clientes() {
       </div>
     );
   }
+  console.log(data);
 
   return (
     <div className="flex flex-col gap-4">

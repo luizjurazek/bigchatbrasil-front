@@ -23,6 +23,8 @@ export default async function MensagensPage() {
     );
   }
 
+  console.log(messageData);
+
   return (
     <div className="flex flex-col gap-4">
       <ThemeToggle />

@@ -14,8 +14,10 @@ export async function HandleSubmitSendMessage(
     const message: Message = {
       phoneNumber: values.phonenumber,
       message: values.message,
-      clientId: parseInt(values.client_id),
       whatsApp: values.whatsapp,
+      client: {
+        id: parseInt(values.client_id),
+      },
     };
 
     await PostSendMessage(message);
