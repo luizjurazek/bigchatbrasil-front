@@ -3,10 +3,10 @@ import { Client } from "@/types/ClientTypes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
-import { Button } from "@/components/ui/button"
 
 import UpdateLimitModal from "./UpdateLimitModal"
 import AddCreditModal from "./AddCreditModal"
+import AlterPlanModal from "./AlterPlanModal"
 
 type ClientProfileProps = {
   client: Client;
@@ -82,9 +82,9 @@ return (
                 <AddCreditModal id={client.id}/>
               )}
 
-              <div>
-                <Button>Alterar plano</Button>
-              </div>
+              {client.id && (
+                <AlterPlanModal id={client.id} initialPlan={client.plan}/>
+              )}
             </div>
           </div>
         </div>
