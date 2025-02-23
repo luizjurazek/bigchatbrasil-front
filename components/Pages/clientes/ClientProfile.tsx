@@ -2,6 +2,7 @@ import { Client } from "@/types/ClientTypes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button"
 
 
 type ClientProfileProps = {
@@ -66,6 +67,20 @@ return (
               <p className="text-sm text-muted-foreground">Crédito disponível: {balance.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
             </div>
             <Progress value={creditPercentage} className="h-2" />
+          </div>
+          <Separator />
+          <div className="">
+            <div className="flex justify-between">
+              <div>
+                <Button>Atualizar limite</Button>
+              </div>
+              <div>
+                <Button>Adicionar crédito</Button>
+              </div>
+              <div>
+                <Button>Alterar plano</Button>
+              </div>
+            </div>
           </div>
         </div>
       </CardContent>

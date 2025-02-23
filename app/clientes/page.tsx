@@ -3,7 +3,7 @@ import { ThemeToggle } from "@/components/ui/toggleButton";
 import { DataTable } from "@/components/Pages/Table";
 import { columns } from "./table-columns";
 
-export default async function Home() {
+export default async function Clientes() {
   let data = [];
 
   try {
