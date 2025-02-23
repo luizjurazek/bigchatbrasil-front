@@ -2,7 +2,7 @@ import { ThemeToggle } from "@/components/ui/toggleButton";
 import FormSendMessage from "@/components/Pages/Mensagens/FormSendMessage";
 import { GetClients } from "@/api/Clients/GetClients";
 import { Client } from "@/types/ClientTypes";
-
+import FormCreateClient from "@/components/Pages/clientes/FormCreateClient";
 export default async function Home() {
   const client: Client[] = await GetClients();
   
@@ -11,6 +11,7 @@ export default async function Home() {
       <ThemeToggle />
       <h1>Home page</h1>
       <FormSendMessage clients={client}/>
+      <FormCreateClient />
     </>
   );
 }
