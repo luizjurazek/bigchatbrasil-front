@@ -1,5 +1,5 @@
 export type Message = {
-  id: number;
+  id?: number;
   phoneNumber: string;
   message: string;
   clientId: number;
