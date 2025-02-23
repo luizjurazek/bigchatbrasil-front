@@ -2,6 +2,7 @@ import { GetClients } from "@/api/Clients/GetClients";
 import { ThemeToggle } from "@/components/ui/toggleButton";
 import { DataTable } from "@/components/Pages/Table";
 import { columns } from "./table-columns";
+import FormCreateClient from "@/components/Pages/clientes/FormCreateClient";
 
 export default async function Clientes() {
   let data = [];
@@ -18,11 +19,12 @@ export default async function Clientes() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <ThemeToggle />
+      <FormCreateClient />
       <div>
         <DataTable tableTitle="Clientes: " columns={columns} data={data} />
       </div>
-    </>
+    </div>
   );
 }
