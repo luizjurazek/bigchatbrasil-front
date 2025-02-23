@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { toast } from "sonner"; 
+import { toast } from "sonner";
 import axios from "axios";
 import { formSchema } from "./FormCreateClient";
 import { Client, planType } from "@/types/ClientTypes";
 import { PostCreateClient } from "@/api/Clients/PostCreateClient";
 
-export async function HandleSubmitCreateClient(values: z.infer<typeof formSchema>){
+export default async function HandleSubmitCreateClient(values: z.infer<typeof formSchema>) {
   try {
     const client: Client = {
       name: values.name,
@@ -17,13 +17,13 @@ export async function HandleSubmitCreateClient(values: z.infer<typeof formSchema
       plan: planType[values.plan as keyof typeof planType],
       usedCredit: values.usedCredit,
       creditLimit: values.creditLimit
-    }
+    };
 
     await PostCreateClient(client);
 
     toast.success("Cliente criado com sucesso!", {
       description: "Cliente foi criado com sucesso.",
-      duration: 3000, 
+      duration: 3000,
     });
 
     setTimeout(() => {
@@ -46,7 +46,7 @@ export async function HandleSubmitCreateClient(values: z.infer<typeof formSchema
         errorMessage = errorData
           .map((err: { field: string; error: string }) => {
             const fieldName = err.field.toLowerCase();
-            return errorMap[fieldName] || err.error;  
+            return errorMap[fieldName] || err.error;
           })
           .join("<br />");
       }
