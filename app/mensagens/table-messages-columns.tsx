@@ -1,12 +1,8 @@
-"use client"
-
+"use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { Message } from "@/types/MessageTypes"
-import { Trash } from 'lucide-react';
+import { Message } from "@/types/MessageTypes";
+import DeleteMessageModal from "@/components/Pages/Mensagens/DeleteMessageModal"
 
-function deleteMessage(id: string) {
-  console.log(id)
-}
 
 export const columns: ColumnDef<Message>[] = [
   {
@@ -27,10 +23,7 @@ export const columns: ColumnDef<Message>[] = [
   },
   {
     header: "Deletar",
-    accessorKey: "delete",  
-    cell: ({ row }) => (
-      <button onClick={() => deleteMessage((`${row.getValue('id')}`))}><Trash /></button>
-    )
+    accessorKey: "delete",
+    cell: ({ row }) => <DeleteMessageModal id={row.getValue("id")} />
   }
-]
-
+];
