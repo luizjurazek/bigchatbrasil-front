@@ -1,12 +1,16 @@
 import { Trash } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { toast } from "sonner"; 
+import { toast } from "sonner";
 
-import { DeleteMessageById } from "@/api/Messages/DeleteMessageById"
-
-
+import { DeleteMessageById } from "@/api/Messages/DeleteMessageById";
 
 export default function DeleteMessageModal({ id }: { id: string }) {
   const [open, setOpen] = useState(false);
@@ -21,18 +25,16 @@ export default function DeleteMessageModal({ id }: { id: string }) {
     if (selectedId) {
       console.log("Deletando mensagem com ID:", selectedId);
       try {
-
         await DeleteMessageById(selectedId);
 
         toast.success("Mensagem deletada!", {
           description: `Mensagem de id ${selectedId} deletada com sucesso.`,
-          duration: 3000, 
+          duration: 3000,
         });
 
         setTimeout(() => {
           window.location.reload();
         }, 3000);
-
       } catch (error) {
         const errorMessage = "Ocorreu um erro ao deletar a mensagem.";
 
@@ -46,7 +48,7 @@ export default function DeleteMessageModal({ id }: { id: string }) {
 
       setOpen(false);
     }
-  };
+  }
 
   return (
     <>
@@ -61,8 +63,12 @@ export default function DeleteMessageModal({ id }: { id: string }) {
           </DialogHeader>
           <p>Tem certeza que deseja deletar esta mensagem?</p>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)}>Cancelar</Button>
-            <Button variant="destructive" onClick={handleDelete}>Deletar</Button>
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Cancelar
+            </Button>
+            <Button variant="destructive" onClick={handleDelete}>
+              Deletar
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

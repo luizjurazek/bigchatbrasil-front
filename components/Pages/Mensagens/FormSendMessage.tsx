@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Toaster } from "sonner"; 
+import { Toaster } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,14 +16,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Client } from "@/types/ClientTypes";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; 
-import { HandleSubmitSendMessage } from "./HandleSubmitSendMessage"; 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { HandleSubmitSendMessage } from "./HandleSubmitSendMessage";
 
 export const formSchema = z.object({
   phonenumber: z.string().nonempty("O telefone é obrigatório"),
   message: z.string().nonempty("A mensagem é obrigatória"),
   whatsapp: z.boolean(),
-  client_id: z.string().min(1, "Selecionar um cliente é obrigatório"), 
+  client_id: z.string().min(1, "Selecionar um cliente é obrigatório"),
 });
 
 interface FormSendMessageProps {
@@ -31,7 +37,10 @@ interface FormSendMessageProps {
   clients?: Client[];
 }
 
-export default function FormSendMessage({ client_id, clients }: FormSendMessageProps) {
+export default function FormSendMessage({
+  client_id,
+  clients,
+}: FormSendMessageProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,19 +53,24 @@ export default function FormSendMessage({ client_id, clients }: FormSendMessageP
 
   return (
     <div className="rounded-xl border bg-card text-card-foreground">
-      <Toaster position="top-right" /> 
+      <Toaster position="top-right" />
       <div className="p-2">
         <h2 className="text-2xl font-bold">Envie uma nova mensagem:</h2>
       </div>
       <div className="p-4">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(HandleSubmitSendMessage)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(HandleSubmitSendMessage)}
+            className="space-y-4"
+          >
             <FormField
               control={form.control}
               name="phonenumber"
               render={({ field }) => (
                 <FormItem className="text-gray-900 dark:text-gray-100">
-                  <FormLabel className="text-gray-900 dark:text-gray-200">Telefone: </FormLabel>
+                  <FormLabel className="text-gray-900 dark:text-gray-200">
+                    Telefone:{" "}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="(xx) xxxxx-xxxx"
@@ -74,7 +88,9 @@ export default function FormSendMessage({ client_id, clients }: FormSendMessageP
               name="message"
               render={({ field }) => (
                 <FormItem className="text-gray-900 dark:text-gray-100">
-                  <FormLabel className="text-gray-900 dark:text-gray-200">Mensagem: </FormLabel>
+                  <FormLabel className="text-gray-900 dark:text-gray-200">
+                    Mensagem:{" "}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Digite sua mensagem"
@@ -93,15 +109,23 @@ export default function FormSendMessage({ client_id, clients }: FormSendMessageP
                 name="client_id"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Cliente: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Cliente:{" "}
+                    </FormLabel>
                     <FormControl>
-                      <Select value={field.value} onValueChange={field.onChange}> 
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
                         <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100">
                           <SelectValue placeholder="Selecione um cliente" />
                         </SelectTrigger>
                         <SelectContent>
                           {clients.map((client: Client) => (
-                            <SelectItem key={client.id} value={String(client.id)}>
+                            <SelectItem
+                              key={client.id}
+                              value={String(client.id)}
+                            >
                               {client.name}
                             </SelectItem>
                           ))}
@@ -119,7 +143,9 @@ export default function FormSendMessage({ client_id, clients }: FormSendMessageP
               name="whatsapp"
               render={({ field }) => (
                 <FormItem className="text-gray-900 dark:text-gray-100">
-                  <FormLabel className="text-gray-900 dark:text-gray-200">É Whatsapp: </FormLabel>
+                  <FormLabel className="text-gray-900 dark:text-gray-200">
+                    É Whatsapp:{" "}
+                  </FormLabel>
                   <FormControl>
                     <Checkbox
                       className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"

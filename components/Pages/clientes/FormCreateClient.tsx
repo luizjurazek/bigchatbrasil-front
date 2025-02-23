@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Toaster } from "sonner"; 
+import { Toaster } from "sonner";
 import { planType } from "@/types/ClientTypes";
 
 import { Button } from "@/components/ui/button";
@@ -16,13 +16,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import HandleSubmitCreateClient from "./HandleSubmitCreateClient";
 
 export const formSchema = z.object({
   name: z.string().nonempty("O nome é obrigatório"),
-  email: z.string().email("O email é inválido").nonempty("O email é obrigatório"),
+  email: z
+    .string()
+    .email("O email é inválido")
+    .nonempty("O email é obrigatório"),
   phone: z.string().nonempty("O telefone é obrigatório"),
   cpf: z.string().nonempty("O CPF é obrigatório"),
   cnpj: z.string().nonempty("O CNPJ é obrigatório"),
@@ -30,13 +39,13 @@ export const formSchema = z.object({
   usedCredit: z
     .string()
     .nonempty("O crédito utilizado é obrigatório e precisar ser mais que 0")
-    .transform((val) => parseFloat(val.replace(",", ".")))  // Transforma o valor em número
+    .transform((val) => parseFloat(val.replace(",", "."))) // Transforma o valor em número
     .refine((val) => val >= 0, "O crédito utilizado precisa ser maior que 0"),
   plan: z.string().nonempty("O plano é obrigatório"),
   creditLimit: z
     .string()
     .nonempty("O limite de crédito é obrigatório e precisar ser mais que 0")
-    .transform((val) => parseFloat(val.replace(",", ".")))  // Transforma o valor em número
+    .transform((val) => parseFloat(val.replace(",", "."))) // Transforma o valor em número
     .refine((val) => val >= 0, "O limite de crédito precisa ser maior que 0"),
 });
 
@@ -56,20 +65,25 @@ export default function FormCreateClient() {
 
   return (
     <div className="rounded-xl border bg-card text-card-foreground">
-      <Toaster position="top-right" /> 
+      <Toaster position="top-right" />
       <div className="p-2">
         <h2 className="text-2xl font-bold">Crie um novo cliente:</h2>
       </div>
       <div className="p-4">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(HandleSubmitCreateClient)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(HandleSubmitCreateClient)}
+            className="space-y-4"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
+                control={form.control}
+                name="name"
+                render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Nome: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Nome:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Nome"
@@ -87,7 +101,9 @@ export default function FormCreateClient() {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Email: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Email:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="email@example.com.br"
@@ -105,7 +121,9 @@ export default function FormCreateClient() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Telefone: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Telefone:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="(xx) xxxxx-xxxx"
@@ -118,14 +136,16 @@ export default function FormCreateClient() {
                 )}
               />
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="cpf"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">CPF: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      CPF:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="xxx.xxx.xxx-xx"
@@ -136,14 +156,16 @@ export default function FormCreateClient() {
                     <FormMessage />
                   </FormItem>
                 )}
-              />  
+              />
 
               <FormField
                 control={form.control}
                 name="cnpj"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">CNPJ: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      CNPJ:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="xx.xxx.xxx/xxxx-xx"
@@ -161,7 +183,9 @@ export default function FormCreateClient() {
                 name="companyName"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Empresa: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Empresa:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Nome da empresa"
@@ -174,16 +198,21 @@ export default function FormCreateClient() {
                 )}
               />
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="plan"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Plano: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Plano:{" "}
+                    </FormLabel>
                     <FormControl>
-                      <Select value={field.value} onValueChange={field.onChange}>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
                         <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100">
                           <SelectValue placeholder="Selecione um plano" />
                         </SelectTrigger>
@@ -206,7 +235,9 @@ export default function FormCreateClient() {
                 name="usedCredit"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Crédito utilizado: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Crédito utilizado:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="00.00"
@@ -224,7 +255,9 @@ export default function FormCreateClient() {
                 name="creditLimit"
                 render={({ field }) => (
                   <FormItem className="text-gray-900 dark:text-gray-100">
-                    <FormLabel className="text-gray-900 dark:text-gray-200">Limite de crédito: </FormLabel>
+                    <FormLabel className="text-gray-900 dark:text-gray-200">
+                      Limite de crédito:{" "}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="00.00"
@@ -237,7 +270,7 @@ export default function FormCreateClient() {
                 )}
               />
             </div>
-          
+
             <Button className="mt-6 w-md" type="submit">
               Criar cliente
             </Button>

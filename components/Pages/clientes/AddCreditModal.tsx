@@ -1,4 +1,10 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -62,8 +68,12 @@ export default function AddCreditModal({ id }: { id: number }) {
             onChange={(e) => setCredit(e.target.value)}
           />
           <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)}>Cancelar</Button>
-            <Button variant="default" onClick={handleUpdate}>Inserir</Button>
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Cancelar
+            </Button>
+            <Button variant="default" onClick={handleUpdate}>
+              Inserir
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

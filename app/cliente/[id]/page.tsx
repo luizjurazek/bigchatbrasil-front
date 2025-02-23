@@ -13,7 +13,7 @@ type ClientPageProps = {
 };
 
 export default async function ClientPage({ params }: ClientPageProps) {
-  const { id } = await params
+  const { id } = await params;
   const idClient: number = parseInt(id, 10);
   const client: Client = await GetClientById(idClient);
   const messages: Message[] = await GetMessagesByClientId(idClient);
@@ -28,7 +28,11 @@ export default async function ClientPage({ params }: ClientPageProps) {
         <FormSendMessage client_id={client.id} />
       </div>
       <div>
-        <DataTable tableTitle="Mensagens enviadas: " columns={columns} data={messages} />
+        <DataTable
+          tableTitle="Mensagens enviadas: "
+          columns={columns}
+          data={messages}
+        />
       </div>
     </div>
   );

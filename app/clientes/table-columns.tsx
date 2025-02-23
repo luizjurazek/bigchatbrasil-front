@@ -1,57 +1,58 @@
-"use client"
+"use client";
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Client } from "@/types/ClientTypes";
 import Link from "next/link";
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink } from "lucide-react";
 
 export const columns: ColumnDef<Client>[] = [
   {
     header: "Id",
-    accessorKey: "id"
+    accessorKey: "id",
   },
   {
     header: "Nome",
-    accessorKey: "name"
+    accessorKey: "name",
   },
   {
     header: "E-mail",
-    accessorKey: "email"
+    accessorKey: "email",
   },
   {
     header: "Telefone",
-    accessorKey: "phone"
+    accessorKey: "phone",
   },
   {
     header: "CPF",
-    accessorKey: "cpf"
+    accessorKey: "cpf",
   },
   {
     header: "CNPJ",
-    accessorKey: "cnpj"
+    accessorKey: "cnpj",
   },
   {
     header: "Empresa",
-    accessorKey: "companyName"
+    accessorKey: "companyName",
   },
   {
     header: "Plano",
-    accessorKey: "plan"
+    accessorKey: "plan",
   },
   {
     header: "Crédito utilizado",
-    accessorKey: "usedCredit"
+    accessorKey: "usedCredit",
   },
   {
     header: "Limite de crédito",
-    accessorKey: "creditLimit"
+    accessorKey: "creditLimit",
   },
   {
     header: "Perfil",
-    accessorKey: "Perfil",  
+    accessorKey: "Perfil",
     cell: ({ row }) => (
-      <Link href={`/cliente/${row.getValue('id')}`}><ExternalLink /></Link>
-    )
-  }
-]
-
+      <Link href={`/cliente/${row.getValue("id")}`}>
+        <ExternalLink />
+      </Link>
+    ),
+  },
+];

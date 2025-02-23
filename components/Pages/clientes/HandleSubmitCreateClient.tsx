@@ -5,7 +5,9 @@ import { formSchema } from "./FormCreateClient";
 import { Client, planType } from "@/types/ClientTypes";
 import { PostCreateClient } from "@/api/Clients/PostCreateClient";
 
-export default async function HandleSubmitCreateClient(values: z.infer<typeof formSchema>) {
+export default async function HandleSubmitCreateClient(
+  values: z.infer<typeof formSchema>,
+) {
   try {
     const client: Client = {
       name: values.name,
@@ -16,7 +18,7 @@ export default async function HandleSubmitCreateClient(values: z.infer<typeof fo
       companyName: values.companyName,
       plan: planType[values.plan as keyof typeof planType],
       usedCredit: values.usedCredit,
-      creditLimit: values.creditLimit
+      creditLimit: values.creditLimit,
     };
 
     await PostCreateClient(client);

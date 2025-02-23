@@ -8,11 +8,10 @@ import { GetClients } from "@/api/Clients/GetClients";
 export default async function MensagensPage() {
   let messageData = [];
   let clientData = [];
-  
+
   try {
     messageData = await GetMessages();
     clientData = await GetClients();
-
   } catch (error) {
     console.error("Erro ao buscar mensagens ou clientes:", error);
     return (
@@ -27,7 +26,11 @@ export default async function MensagensPage() {
       <ThemeToggle />
       <FormSendMessage clients={clientData} />
       <div>
-        <DataTable tableTitle="Mensagens: " columns={columns} data={messageData} />
+        <DataTable
+          tableTitle="Mensagens: "
+          columns={columns}
+          data={messageData}
+        />
       </div>
     </div>
   );

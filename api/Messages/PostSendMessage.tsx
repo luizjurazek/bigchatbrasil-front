@@ -1,4 +1,4 @@
-import { Message } from "@/types/MessageTypes"
+import { Message } from "@/types/MessageTypes";
 import axios from "axios";
 
 export const PostSendMessage = async (message: Message): Promise<Message> => {

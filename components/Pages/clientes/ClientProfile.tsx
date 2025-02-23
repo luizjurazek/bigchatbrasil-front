@@ -1,24 +1,26 @@
-"use client"  
+"use client";
 import { Client } from "@/types/ClientTypes";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { Separator } from "@/components/ui/separator"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 
-import UpdateLimitModal from "./UpdateLimitModal"
-import AddCreditModal from "./AddCreditModal"
-import AlterPlanModal from "./AlterPlanModal"
+import UpdateLimitModal from "./UpdateLimitModal";
+import AddCreditModal from "./AddCreditModal";
+import AlterPlanModal from "./AlterPlanModal";
 
 type ClientProfileProps = {
   client: Client;
 };
 
 export default function ClientProfile({ client }: ClientProfileProps) {
-  const creditPercentage = (client.usedCredit / client.creditLimit) * 100
-  const balance = (client.creditLimit - client.usedCredit)
-return (
+  const creditPercentage = (client.usedCredit / client.creditLimit) * 100;
+  const balance = client.creditLimit - client.usedCredit;
+  return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">Cliente: {client.name}</CardTitle>
+        <CardTitle className="text-2xl font-bold">
+          Cliente: {client.name}
+        </CardTitle>
         <p className="text-sm text-muted-foreground">{client.companyName}</p>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -64,10 +66,23 @@ return (
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium">Crédito utilizado</p>
               <p className="text-sm text-muted-foreground">
-                {client.usedCredit.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} /{" "}
-                {client.creditLimit.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                {client.usedCredit.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}{" "}
+                /{" "}
+                {client.creditLimit.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
               </p>
-              <p className="text-sm text-muted-foreground">Crédito disponível: {balance.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
+              <p className="text-sm text-muted-foreground">
+                Crédito disponível:{" "}
+                {balance.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </p>
             </div>
             <Progress value={creditPercentage} className="h-2" />
           </div>
@@ -79,16 +94,16 @@ return (
               )}
 
               {client.id && client.plan === "PRE_PAGO" && (
-                <AddCreditModal id={client.id}/>
+                <AddCreditModal id={client.id} />
               )}
 
               {client.id && (
-                <AlterPlanModal id={client.id} initialPlan={client.plan}/>
+                <AlterPlanModal id={client.id} initialPlan={client.plan} />
               )}
             </div>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

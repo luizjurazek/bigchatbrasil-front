@@ -1,4 +1,4 @@
-import { Client } from "@/types/ClientTypes"
+import { Client } from "@/types/ClientTypes";
 import axios from "axios";
 
 export const PostCreateClient = async (client: Client): Promise<Client> => {

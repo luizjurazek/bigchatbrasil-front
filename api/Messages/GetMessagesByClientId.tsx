@@ -1,7 +1,9 @@
-import { Message } from "@/types/MessageTypes"
+import { Message } from "@/types/MessageTypes";
 import axios from "axios";
 
-export const GetMessagesByClientId = async (clientId: number): Promise<Message[]> => {
+export const GetMessagesByClientId = async (
+  clientId: number,
+): Promise<Message[]> => {
   const api = process.env.NEXT_PUBLIC_API_URL;
   try {
     const response = await axios.get(`${api}/sms/client/${clientId}`);

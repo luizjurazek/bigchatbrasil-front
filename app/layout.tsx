@@ -4,7 +4,6 @@ import "./globals.css";
 import { Providers } from "@/components/theme-provider";
 import Header from "@/components/Header/Header";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,16 +23,13 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) { 
-
+}>) {
   return (
     <html lang="en">
       <body>
         <Header />
-        <Providers >
-          <div className="container mx-auto my-6 px-4">
-            {children}
-          </div>
+        <Providers>
+          <div className="container mx-auto my-6 px-4">{children}</div>
         </Providers>
       </body>
     </html>

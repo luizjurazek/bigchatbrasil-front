@@ -10,5 +10,4 @@ export const GetClients = async (): Promise<Client[]> => {
     console.error("Erro ao buscar clientes:", error);
     throw error;
   }
-}
-
+};

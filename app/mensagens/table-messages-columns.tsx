@@ -1,29 +1,28 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Message } from "@/types/MessageTypes";
-import DeleteMessageModal from "@/components/Pages/Mensagens/DeleteMessageModal"
-
+import DeleteMessageModal from "@/components/Pages/Mensagens/DeleteMessageModal";
 
 export const columns: ColumnDef<Message>[] = [
   {
     header: "Id",
-    accessorKey: "id"
+    accessorKey: "id",
   },
   {
     header: "Telefone",
-    accessorKey: "phoneNumber"
+    accessorKey: "phoneNumber",
   },
   {
     header: "Mensagem",
-    accessorKey: "message"
+    accessorKey: "message",
   },
   {
     header: "Whatsapp",
-    accessorKey: "whatsApp"
+    accessorKey: "whatsApp",
   },
   {
     header: "Deletar",
     accessorKey: "delete",
-    cell: ({ row }) => <DeleteMessageModal id={row.getValue("id")} />
-  }
+    cell: ({ row }) => <DeleteMessageModal id={row.getValue("id")} />,
+  },
 ];

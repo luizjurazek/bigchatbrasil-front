@@ -4,4 +4,4 @@ export type Message = {
   message: string;
   clientId: number;
   whatsApp: boolean;
-}
+};
