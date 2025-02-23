@@ -3,14 +3,14 @@ export enum planType {
   PRE_PAGO = "PRE_PAGO"
 }
 export type Client = {
-  id: number;
+  id?: number;
   name: string;
   email: string;
-  phone: string,
-	cpf: string,
-	cnpj: string,
-	companyName: string,
-	plan: planType,
-	usedCredit: number,
+  phone: string;
+	cpf: string;
+	cnpj: string;
+	companyName: string;
+	plan: planType;
+	usedCredit: number;
 	creditLimit: number
 }
