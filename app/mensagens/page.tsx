@@ -2,27 +2,33 @@ import { GetMessages } from "@/api/Messages/GetMessages";
 import { columns } from "./table-messages-columns";
 import { DataTable } from "@/components/Pages/Table";
 import { ThemeToggle } from "@/components/ui/toggleButton";
+import FormSendMessage from "@/components/Pages/Mensagens/FormSendMessage";
+import { GetClients } from "@/api/Clients/GetClients";
 
 export default async function MensagensPage() {
-  let data = [];
+  let messageData = [];
+  let clientData = [];
   
-    try {
-      data = await GetMessages();
-    } catch (error) {
-      console.error("Erro ao buscar mensagens:", error);
-      return (
-        <div>
-          <p>Erro ao carregar as mensagens. Tente novamente mais tarde.</p>
-        </div>
-      );
-    }
-  
+  try {
+    messageData = await GetMessages();
+    clientData = await GetClients();
+
+  } catch (error) {
+    console.error("Erro ao buscar mensagens ou clientes:", error);
     return (
-      <>
-        <ThemeToggle />
-        <div>
-          <DataTable tableTitle="Mensagens: " columns={columns} data={data} />
-        </div>
-      </>
+      <div>
+        <p>Erro ao carregar as mensagens. Tente novamente mais tarde.</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      <ThemeToggle />
+      <FormSendMessage clients={clientData} />
+      <div>
+        <DataTable tableTitle="Mensagens: " columns={columns} data={messageData} />
+      </div>
+    </div>
+  );
 }
