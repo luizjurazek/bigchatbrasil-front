@@ -1,9 +1,11 @@
+"use client"  
 import { Client } from "@/types/ClientTypes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 
+import UpdateLimitModal from "./UpdateLimitModal"
 
 type ClientProfileProps = {
   client: Client;
@@ -70,13 +72,17 @@ return (
           </div>
           <Separator />
           <div className="">
-            <div className="flex justify-between">
-              <div>
-                <Button>Atualizar limite</Button>
-              </div>
-              <div>
-                <Button>Adicionar crédito</Button>
-              </div>
+            <div className="flex gap-6">
+              {client.id && client.plan === "POS_PAGO" && (
+                <UpdateLimitModal id={client.id} limit={client.creditLimit} />
+              )}
+
+              {client.plan === "PRE_PAGO" && (
+                <div>
+                  <Button>Adicionar crédito</Button>
+                </div>
+              )}
+
               <div>
                 <Button>Alterar plano</Button>
               </div>
